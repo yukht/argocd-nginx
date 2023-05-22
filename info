@@ -1,0 +1,14 @@
+a)
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+or
+
+b)
+wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl create namespace argocd
+kubectl apply -n argocd -f ./install.yaml
+
+# go to GUI
+kubectl port-forward svc/argocd-server -n argocd --address 0.0.0.0 8443:443
+kubectl port-forward svc/gitops1-service -n gitops --address 0.0.0.0 8480:80
